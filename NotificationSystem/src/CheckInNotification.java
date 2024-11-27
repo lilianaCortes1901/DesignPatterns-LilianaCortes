@@ -12,4 +12,8 @@ public class CheckInNotification implements Notification{
     public String getTimeStamp(){
         System.out.println("12:30");
     }
+
+    public void send(String message){
+        System.out.println("New Message" );
+    }
 }
