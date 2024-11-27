@@ -3,5 +3,5 @@
 public interface Notification {
     String getSent();
     String getMessage();
-    double getTimeStamp();
+    String getTimeStamp();
 }
