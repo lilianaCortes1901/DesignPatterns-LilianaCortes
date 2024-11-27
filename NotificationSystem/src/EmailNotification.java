@@ -1,7 +1,7 @@
-//Concrete Decorator: SMS Notification extends Notification Decorator
+//Concrete Decorator: Email Notification extends Notification Decorator
 
-public class SMSNotification extends NotificationDecorator {
-    public SMSNotification(Notification notificationDecorator){
+public class EmailNotification extends NotificationDecorator {
+    public EmailNotification(Notification notificationDecorator){
         super(notificationDecorator);
     }
 
@@ -22,6 +22,6 @@ public class SMSNotification extends NotificationDecorator {
 
     @Override
     public void send(String message) {
-        System.out.println("SMS Notification" + super.getTimeStamp()+ " - " + super.getSent() + " : " + super.getMessage());
+        System.out.println("Email Notification" + super.getTimeStamp()+ " - " + super.getSent() + " : " + super.getMessage());
     }
 }

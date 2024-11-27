@@ -1,7 +1,7 @@
-//Concrete Decorator: SMS Notification extends Notification Decorator
+//Concrete Decorator: Slack Notification extends Notification Decorator
 
-public class SMSNotification extends NotificationDecorator {
-    public SMSNotification(Notification notificationDecorator){
+public class SlackNotification extends NotificationDecorator {
+    public SlackNotification(Notification notificationDecorator){
         super(notificationDecorator);
     }
 
@@ -22,6 +22,6 @@ public class SMSNotification extends NotificationDecorator {
 
     @Override
     public void send(String message) {
-        System.out.println("SMS Notification" + super.getTimeStamp()+ " - " + super.getSent() + " : " + super.getMessage());
+        System.out.println("Slack Notification" + super.getTimeStamp()+ " - " + super.getSent() + " : " + super.getMessage());
     }
 }
