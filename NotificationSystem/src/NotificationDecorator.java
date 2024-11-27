@@ -4,6 +4,7 @@ public abstract class NotificationDecorator implements Notification{
     private Notification notificationDecorator;
 
     public NotificationDecorator(Notification notificationDecorator) {
+        this.notificationDecorator = notificationDecorator;
     }
 
     public void setNotificationDecorator(Notification notificationDecorator) {
