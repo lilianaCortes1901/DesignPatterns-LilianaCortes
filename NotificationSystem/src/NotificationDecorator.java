@@ -1,7 +1,10 @@
 //Decorator that implements Notification interface
 
-public class NotificationDecorator implements Notification{
+public abstract class NotificationDecorator implements Notification{
     private Notification notificationDecorator;
+
+    public NotificationDecorator(Notification notificationDecorator) {
+    }
 
     public void setNotificationDecorator(Notification notificationDecorator) {
         this.notificationDecorator = notificationDecorator;
