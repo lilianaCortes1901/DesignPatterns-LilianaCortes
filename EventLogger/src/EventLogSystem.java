@@ -10,6 +10,8 @@ public class EventLogSystem {
     private FileWriter fileWriter;
     //Store log history in array
     private List<String> logHistory;
+    //List of outputs
+    private List<String> outputs;
 
     //declaring a file writer for receiving messages
     public String messageWriter;
@@ -49,10 +51,15 @@ public class EventLogSystem {
         System.out.println(logEntry);
     }
 
-
     //Printing log history
     public synchronized List<String> getLogHistory(){
         return logHistory;
+    }
+
+    //Implementing User Story 4
+    public synchronized void addOutput(AdminLog output){
+        outputs = new ArrayList<>();
+        outputs.add(output.toString());
     }
 
     public synchronized void close(){

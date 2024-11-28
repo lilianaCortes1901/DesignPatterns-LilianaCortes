@@ -31,6 +31,12 @@ public class EventLogMain {
             System.out.println(log);
         }
 
+        //Adding output types
+        logger.addOutput(new ConsoleOutput());
+        FileOutput fileOutput = new FileOutput("logexample.log");
+        logger.addOutput(fileOutput);
+
+        fileOutput.close();
         logger.close();
 
     }
