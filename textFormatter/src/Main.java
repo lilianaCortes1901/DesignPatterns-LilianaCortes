@@ -3,6 +3,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
+
+        //Gets user input on format style options
+        Scanner styleInput = new Scanner(System.in);
+        System.out.println("Enter format style: ");
+
         ArrayList<String> data = new ArrayList<>();
         data.add("The beginning of a new world");
         data.add("Starts with the creation of an idolized image of a higher being.");
@@ -10,19 +15,25 @@ public class Main {
 
         textFileList file = new textFileList(data);
 
-        //Gets user input on format style options
-        Scanner styleInput = new Scanner(System.in);
-        System.out.println("Enter format style: ");
-
-        String formatStyle = styleInput.nextLine();
-        if (formatStyle.contains("Plain")){
+        String formatStyle = styleInput.nextLine().trim();
+        if (formatStyle.equalsIgnoreCase("Plain")){
             file.setFormat(new PlainTextFormat());
-        } else if (formatStyle.contains("HTML")){
+            System.out.println("PlainTextFormat has been set.");
+            file.print();
+        } else if (formatStyle.equalsIgnoreCase("HTML")){
+            System.out.println("HTMLFormat has been set.");
             file.setFormat(new HTMLFormat());
-        } else if (formatStyle.contains("Markdown")){
+            file.print();
+        } else if (formatStyle.equalsIgnoreCase("Markdown")){
+            System.out.println("MarkdownFormat has been set.");
             file.setFormat(new MarkdownFormat());
-        } else {
+            file.print();
+        } else if (formatStyle.equalsIgnoreCase("JSON")){
+            System.out.println("JSONFormat has been set.");
             file.setFormat(new JSONFormat());
+            file.print();
+        } else {
+            System.out.println("Invalid format style. Defaulting to PlainTextFormat.");
         }
 
         //user story number 4: switching between formatting styles.
