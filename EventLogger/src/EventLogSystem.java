@@ -1,11 +1,15 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventLogSystem {
     //static variable reference to Singleton
     private static volatile EventLogSystem event_instance;
     private FileWriter fileWriter;
+    //Store log history in array
+    private List<String> logHistory;
 
     //declaring a file writer for receiving messages
     public String messageWriter;
@@ -33,14 +37,22 @@ public class EventLogSystem {
 
     //User Story 2: log different messages with severity levels
     public synchronized void log(LogLevel level, String message) throws IOException {
+        logHistory = new ArrayList<>();
+        String logEntry = String.format("[%s] [%s] %s", LocalDateTime.now(), level.name(), message);
+        logHistory.add(logEntry);
         try {
-            String logEntry = String.format("[%s] [%s] %s%n", LocalDateTime.now(), level.name(), message);
             fileWriter.write(logEntry);
             fileWriter.flush();
-            System.out.println(logEntry);
         } catch (IOException e){
-            System.out.println("Logging failed: " + e.getMessage());
+            System.out.println("Log failed " + e.getMessage());
         }
+        System.out.println(logEntry);
+    }
+
+
+    //Printing log history
+    public synchronized List<String> getLogHistory(){
+        return logHistory;
     }
 
     public synchronized void close(){
@@ -52,4 +64,5 @@ public class EventLogSystem {
             System.out.println("Error closing logger: " + e.getMessage());
         }
     }
+
 }

@@ -25,6 +25,12 @@ public class EventLogMain {
         logger.log(LogLevel.DEBUG, "Log debugging");
         logger.log(LogLevel.ERROR, "Log failed");
 
+        //Printing & reviewing log history
+        System.out.println("Log history: ");
+        for (String log : logger.getLogHistory()){
+            System.out.println(log);
+        }
+
         logger.close();
 
     }
